@@ -1,0 +1,617 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=0.5">
+      <link rel="stylesheet" href="bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+      <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      
+      <title>Beranda Unri</title>
+      <style>
+        @import url('https://fonts.google.com/specimen/Poppins');
+@import url('https://fonts.cdnfonts.com/css/playfair-display');
+@import url('https://fonts.googleapis.com/css?family=Public Sans');
+body {
+    font-family: Poppins;
+}
+
+/* Media queries untuk membuat navbar responsif */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column; /* Mengatur tata letak menjadi kolom pada layar kecil */
+        align-items: center; /* Mengatur konten berada di tengah secara vertikal */
+    }
+    .navbar-nav .nav-link {
+        margin: 10px 0; /* Atur jarak antara link */
+    }
+}
+
+  
+@import url('https://fonts.googleapis.com/css2?family=Merriweather');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+
+.counter-wrapper{
+    background-color: #F2B541;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Menggunakan 6 kolom */
+    grid-gap: 1rem; /* Jarak antar elemen */
+    padding: 1rem; /* Padding untuk memberi ruang di sekitar konten */
+    align-items: center; /* Mengatur posisi vertikal elemen dalam baris */
+    justify-items: center; /* Mengatur posisi horizontal elemen dalam kolom */
+}
+/* CSS yang lain tetap sama */
+
+.counter-wrapper::before{
+    position: absolute;
+    content: '';
+    content: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.counter {
+    text-align: center;
+    color: #ddd;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.counter::before{
+    position: absolute;
+    content: '';
+    bottom: -2rem;
+    left: 50%;
+    width: 20%;
+    height: .2rem;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+.counter .count{
+    font-size: 2rem; /* Ukuran teks yang lebih kecil */
+    margin-bottom: 0.5rem; /* Jarak antara count dan p */    
+}
+.counter p{
+    font-size: 15px; /* Ukuran teks p yang lebih kecil */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin: 0; /* Menghilangkan margin bawaan */
+}
+
+.counter-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .counter {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+
+  @media only screen and (max-width: 768px) {
+    .counter-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .counter i{
+        font-size: 70px;
+    }
+    .counter h1,
+    .counter p {
+      font-size: 30px;
+    }
+  }
+.nav-link{
+  transition: all 0.3s;
+  position: relative;
+  color: #ddd;
+}
+
+.nav-link:hover{
+  /* text-decoration: underline; */
+  /* border-bottom: 2px solid #ddd; */
+}
+
+.nav-link::after{
+  content: '';
+  height: 5px;
+  width: 100%;
+  background-color: #3DB166;
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  opacity: 0;
+  transition: all .5s ease 0s;
+	z-index: 0;
+}
+.nav-link:hover::after{
+  opacity: 1;
+  
+}
+      </style>
+      
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg py-2 navbar-dark bg-black">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto " style="font-size: 12px;">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Portal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Kalender Akademik</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Webmail</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Blog Staff</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Dokumen</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Prestasi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">PPID</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">PKKMB</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active me-4" aria-current="page" href="#"><i class="bi bi-search text-warning"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href=""><img src="image/indonesia.jpg" alt="indonesia"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href=""><img src="image/inggris.jpg" alt="inggris"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <nav class="navbar navbar-expand-lg py-4 sticky-top" style="background-color: #F2B541;" >
+      <div class="container-fluid">
+        <a class="navbar-brand mx-4" href="#">
+          <img src="https://unri.ac.id/wp-content/uploads/2024/02/logo-unri21-Blu-1.png" alt="Bootstrap" width="218px" height="32px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto" style="font-size: 13.4px;">
+            <ul class="navbar-nav ps-0">
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="berandaunri.html">BERANDA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="#">TENTANG UNRI</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="#">PENDIDIKAN</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="#">PENELITIAN</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="#">MAHASISWA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="#">INTERNASIONAL</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="#">SISTEM INFORMASI</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active px-0 ms-4" style="color: #ddd;" aria-current="page" href="#">PENDAFTARAN</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="max-width: 100%;">
+            <source src="video/y2mate.com-SLIDESHOW-UNRI-2023_1080p.mp4" type="video/mp4">
+          </video>
+          <div class="carousel-caption" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <img src="image/Universitas Riau (1).png" alt="" width="auto" style="max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <div class="row p-4 ps-5">
+        <div class="col-md">
+          <h3 style="font-weight: 700;">BERITA</h3>
+        </div>
+      </div>
+      <div class="row ps-5 pe-5 fw-bold">
+        <div class="col-md-4 ">
+          <img src="https://unri.ac.id/wp-content/uploads/2024/03/Sejarah-Baru-Bagi-UNRI-8-Mahasiswa-Lolos-Program-Bergengsi-Indonesian-International-Student-Mobility-Awards-IISMA-700x430.gif" alt="" style="max-width: 100%;">
+          <p>Sejarah Baru Bagi UNRI, 8 Mahasiswa Lolos Program Bergengsi Indonesian International Student Mobility Awards (IISMA)</p>
+          <p class="opacity-50">MARCH 22, 2024</p>
+        </div>
+        <div class="col-md-4">
+          <img src="image/testgif.gif" alt="" style="max-width: 100%;">
+          <p>Berkunjung ke UNRI, BI Riau Sampaikan Beasiswa</p>
+          <p class="opacity-50">MARCH 21, 2024</p>
+        </div>
+        <div class="col-md-4">
+          <img src="https://unri.ac.id/wp-content/uploads/2024/03/UNRI-Jalin-Kerja-Sama-dengan-Kadin-Dumai-700x430.jpg" alt="" style="max-width: 100%;">
+          <p>UNRI Jalin Kerja Sama dengan Kadin Dumai</p>
+          <p class="opacity-50">MARCH 20, 2024</p>
+        </div>
+        <div class="col-md-4">
+          <img src="https://unri.ac.id/wp-content/uploads/2024/03/Rektor-UNRI-Jadi-Saksi-Pelantikan-PJ-Sekda-Provinsi-Riau-700x430.gif" alt="" style="max-width: 100%;">
+          <p>Rektor UNRI Jadi Saksi Pelantikan PJ. Sekda Provinsi Riau</p>
+          <p class="opacity-50">MARCH 19, 2024</p>
+        </div>
+        <div class="col-md-4">
+          <img src="https://unri.ac.id/wp-content/uploads/2024/03/Optimalisasi-Program-Kerja-Bidang-Akademis-dan-Kemahasiswaan-Untuk-Akselerasi-Capaian-Kinerja-Tahun-2025-700x430.jpg" alt="" style="max-width: 100%;">
+          <p>Optimalisasi Program Kerja Bidang Akademis dan Kemahasiswaan Untuk Akselerasi Capaian Kinerja Tahun 2025</p>
+          <p class="opacity-50">MARCH 18, 2024</p>
+        </div>
+        <div class="col-md-4">
+          <img src="https://unri.ac.id/wp-content/uploads/2024/03/INNOVASI-TIM-PROMEEG-UNIVERSITAS-RIAU-RAIH-RUNNER-UP-CARBON-NEUTRAL-SOLUTION-ANUGRAH-INNOVILLAGE-2023-700x430.jpg" alt="" style="max-width: 100%;">
+          <p>INOVASI TIM PROMEEG UNIVERSITAS RIAU RAIH RUNNER UP CARBON NEUTRAL SOLUTION ANUGRAH INNOVILLAGE 2023</p>
+          <p class="opacity-50">MARCH 18, 2024</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row p-4 ps-5">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-outline-warning text-black rounded-5 p-3 fw-bold"  style="font-size: 14px;">Berita Sebelumnya </button>
+        </div>
+        <div class="col-md-3 mb-3">
+
+        </div>
+        <div class="col-md-6 pe-0">
+          <button type="button" class="btn btn-outline-warning text-black fw-bold rounded-5 p-3 " style="font-size: 14px;">Paduan Pendaftaran Ulang Mahasiswa Baru Jalur SNBT TA 2023/2024</button>
+        </div>
+      </div>
+    </div>
+    <div class="counter-wrapper">
+      <div class="counter">
+        <i class="bi bi-person-circle" style="font-size: 50px;"></i>
+          <h1 class="count" data-target="107">0</h1>
+          <p>GURU BESAR</p>
+      </div>
+      <div class="counter">
+        <i class="bi bi-building-fill" style="font-size: 50px;"></i>
+          <h1 class="count" data-target="10">0</h1>
+          <p>FAKULTAS</p>
+      </div>
+      <div class="counter">
+        <i class="bi bi-book-half" style="font-size: 50px;"></i>
+          <h1 class="count" data-target="35388">0</h1>
+          <p>DOSEN</p>
+      </div>
+      <div class="counter">
+        <i class="bi bi-person-vcard-fill" style="font-size: 50px;"></i>
+          <h1 class="count" data-target="109">0</h1>
+          <p>MAHASISWA</p>
+      </div>
+      <div class="counter">
+        <i class="bi bi-trello" style="font-size: 50px;"></i>
+          <h1 class="count" data-target="902">0</h1>
+          <p>PROGRAM STUDI</p>
+      </div>
+      <div class="counter">
+        <i class="bi bi-person-badge" style="font-size: 50px;"></i>
+          <h1 class="count" data-target="365">0</h1>
+          <p>TENAGA KEPENDIDIKAN</p>
+      </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row p-4 ps-5">
+      <div class="col-md ">
+        <h3 style="font-weight: 700;">Pengumuman</h3>
+      </div>
+    </div>
+    <div class="row ps-5 fw-bold">
+      <div class="col-md-4 mb-4">
+        <p>Hasil Evaluasi Daya Tampung Program Studi Yang Terdeteksi Kenaikan Anomali</p>
+        <p class="opacity-50">JANUARY 31, 2024</p>
+      </div>
+      <div class="col-md-4">
+        <p>Pembayaran UKT/SPP Semester Genap tahun Akademik 2024/2024</p>
+        <p class="opacity-50">JANUARY 3, 2024</p>
+      </div>
+      <div class="col-md-4">
+        <p>Pengajuan Revisi UKT Mahasiswa Angkatan 2023 Pemegang KIP Kuliah yang Tidak Termasuk Penerima Beasiswa KIP Kuliah</p>
+        <p class="opacity-50">DECEMBER 28, 2023</p>
+      </div>
+      <div class="col-md-4">
+        <p>Hasil Akhir Seleksi (Kelulusan) PPPK Kebutuhan Tenaga Teknis dan Tenaga Kesehatan Kemdikbudristek TA 2023</p>
+        <p class="opacity-50">DECEMBER 24, 2023</p>
+      </div>
+      <div class="col-md-4">
+        <p>Hasil SKD CPNS Kemdikbudristek TA 2023</p>
+        <p class="opacity-50">NOVEMBER 24, 2023</p>
+      </div>
+      <div class="col-md-4">
+        <p>Pengajuan Revisi UKT Semester Genap Tahun 2023/2024</p>
+        <p class="opacity-50">OCTOBER 12, 2023</p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row p-4 ps-5">
+      <div class="col-md-3">
+        <button type="button" class="btn btn-outline-warning text-black rounded-5 p-3 fw-bold">Pengumuman Sebelumnya</button>
+      </div>
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-6  ">
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="background-color: rgba(242, 181, 65, 0.5);">
+    <div class="row p-4 ps-5">
+      <div class="col-md-6">
+        <i class="bi bi-quote" style="font-size: 60px; color: #F2B541;"></i>
+        <h2><button type="button" class="btn btn-warning" style="font-family: Playfair Display; font-weight: 600; padding: 20; color: white;"><img src="image/LOGO-UNRI-2.png" alt="" width="30px" style="padding: 20; margin-right: 14px;">UNIVERSITAS RIAU</button><br>
+          UNRI Memiliki 10 fakultas yang menyelenggarakan program sarjana, pascasarjana, profesi, serta diploma. 
+        </h2>
+      </div>
+      <div class="col-md-6" >
+        <img src="image/babang.jpg" alt="" style="max-width: 100%;">
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid py-5" style="background-color: rgba(40, 40, 40, 0.75);">
+    <h1 class="text-center">Program Universitas Riau</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+
+        <div class="col">
+            <div class="card pb-5 px-5" style="height: 400px; background-color: #282828; border: 2px solid #F2B541;"> 
+                <div class="card-body text-center" style="color: #F2B541;">
+                    <h5 class="card-title" style="padding-top: 100px;">PROGRAM SARJANA</h5>
+                    <p class="card-text">Program sarjana bisa diikuti oleh lulusan SMA/SMK/MA/MAK, mempunyai beban studi 144-160 sks dan dapat ditempuh dalam waktu 8-14 semester.</p>
+                </div>
+                <div class="mb-5 d-flex justify-content-around">
+                    <button class="btn" style="background-color: #F2B541;">Baca Selengkapnya</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card pb-5 px-5" style="height: 400px; background-color: #F2B541; border: 2px solid #282828;">
+                <div class="card-body text-center" style="color: #282828;">
+                    <h5 class="card-title" style="padding-top: 100px;">PROGRAM PASCASARJANA</h5>
+                    <p class="card-text">UNRI menawarkan program studi lanjutan di tingkat S2 dan S3 yang diselenggarakan di fakultas serta sekolah Pascasarjana.</p>
+                </div>
+                <div class="mb-5 d-flex justify-content-around">
+                  <button class="btn" style="background-color: #282828; color: #F2B541;">Baca Selengkapnya</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card pb-5 px-5" style="height: 400px; background-color: #282828; border: 2px solid #F2B541;">
+                <div class="card-body text-center" style="color: #F2B541;">
+                    <h5 class="card-title" style="padding-top: 100px;">PROGRAM PROFESI</h5>
+                    <p class="card-text">Program profesi diperuntukkan sebagai bagi lulusan program studi tertentu sebagai syarat untuk mendapatkan gelar keprofesian.</p>
+                </div>
+                <div class="mb-5 d-flex justify-content-around">
+                  <button class="btn" style="background-color: #F2B541;">Baca Selengkapnya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- <div class="container-fluid">
+    <div class="row p-4 ps-5">
+      <div class="col-md-6 d-flex justify-content-center">
+        <img src="" alt="">
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <img src="" alt="">
+      </div>
+    </div>
+    <div class="row text-center">
+      <h3>Penelitian</h3>
+      <p>Sebagai Universitas Riset Berkelas Dunia, Universitas Riau memberikan perhatian khusus terhadap 
+        kegiatan-kegiatan penelitian serta mendorong dosen dan mahasiswa untuk melakukan dan mengembangkan 
+        berbagai penelitian yang berorientasi untuk memenuhi kebutuhan bangsa.</p>
+    </div>
+  </div> -->
+  <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="image/penelitian.svg" alt="" style="max-width: 100%; opacity: 0.5;">
+        <div class="carousel-caption" style="padding-bottom: 90px;">
+          <h1 style="font-family: Playfair Display; font-weight: 600;">Penelitian</h1>
+          <p>Sebagai Universitas Riset Berkelas Dunia, Universitas Riau memberikan perhatian khusus terhadap 
+            kegiatan-kegiatan penelitian serta mendorong dosen dan mahasiswa untuk melakukan dan mengembangkan 
+            berbagai penelitian yang berorientasi untuk memenuhi kebutuhan bangsa.</p>
+            <button type="button" class="btn btn-warning text-black rounded-5 p-3 fw-bold">Pengumuman Sebelumnya</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="banner-card" style="position: relative;">
+    <img src="image/penelitian.svg" alt="" style="max-width: 100%; height: auto;">
+    <div class="banner-text" style="position: absolute; top: 20%; color: white; padding: 10px; text-align: center;">
+      <h1 style="font-size: 3vw;">Penelitian</h1>
+      <p style="font-size: 1.5vw; margin-bottom: 1vw;">Sebagai Universitas Riset Berkelas Dunia, Universitas Riau memberikan perhatian khusus terhadap 
+        kegiatan-kegiatan penelitian serta mendorong dosen dan mahasiswa untuk melakukan dan mengembangkan 
+        berbagai penelitian yang berorientasi untuk memenuhi kebutuhan bangsa.</p>
+      <button type="button" class="btn btn-warning text-black rounded-5 fw-bold" style="font-size: 1.5vw; padding: 1vw 3vw;">Selengkapnya</button>
+    </div>
+  </div>
+  
+  
+
+  <div class="container-fluid" style="background-color: rgba(40, 40, 40, 0.75);">
+    <div class="row p-4 ps-3">
+      <div class="col-md-6" >
+        <img src="image/nari.jpeg" alt="" style="max-width: 100%;">
+      </div>
+      <div class="col-md-6">
+        <i class="bi bi-quote" style="font-size: 60px; color: #F2B541;"></i>
+        <h2 style="color: white; font-size: 30px;" ><button type="button" class="btn btn-warning rounded-5" style="font-family: Playfair Display; font-weight: 700; padding: 20; color: #282828; background-color: #F2B541; font-size: 35px;">KEMAHASISWAAN</button><br>
+          UNRI Memiliki 10 fakultas yang menyelenggarakan program sarjana, pascasarjana, profesi, serta diploma. 
+        </h2>
+        <button type="button" class="btn btn-outline-warning rounded-5" style="font-family: Poppins; font-weight: 600; padding: 20; font-size: 20px;">Lebih Lanjut</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner-card" style="position: relative;">
+    <img src="image/KKN.svg" alt="" style="max-width: 100%; height: auto;">
+    <div class="banner-text" style="position: absolute; top: 15%; color: white; padding: 10px; text-align: center;">
+        <h1 style="font-size: 3vw; margin-bottom: 1vw;">Pengabdian</h1>
+        <p style="font-size: 1.5vw; margin-bottom: 1vw;">UNRI secara konsisten dan sistematik sejak tahun pendiriannya 1962 berjuang bersama rakyat 
+        hingga akar rumput membangun dan menyejahterakan Indonesia. UNRI terus mendorong peningkatan 
+        kuantitas dan kualitas pengabdian kepada masyarakat berbasis riset di Indonesia maupun di dunia 
+        Internasional dengan prinsip-prinsip pembangunan berkelanjutan. UNRI secara bertahap membangun 
+        kepemimpinan pengabdian kepada masyarakat di dunia internasional, antara lain untuk mendesiminasikan 
+        nilai-nilai baik keindonesiaan dan kemanusiaan.</p>
+        <button type="button" class="btn btn-warning text-black rounded-5 fw-bold" style="font-size: 1vw; padding: 1vw 3vw;">Lebih Lanjut</button>
+    </div>
+</div>
+
+
+  <div class="container-fluid" style="background-color: rgba(242, 181, 65, 0.5);">
+    <div class="row p-4 ps-3">
+      <div class="col-md-6">
+        <i class="bi bi-quote" style="font-size: 60px; color: #282828;"></i>
+        <h2 style="color: #282828; font-size: 30px;"><button type="button" class="btn btn-warning rounded-5" style="font-family: Playfair Display; font-weight: 700; padding: 20; color: #F2B541; background-color: #282828; font-size: 35px;">ALUMNI</button><br>
+          UNRI Memiliki 10 fakultas yang menyelenggarakan program sarjana, pascasarjana, profesi, serta diploma. 
+        </h2>
+        <button type="button" class="btn btn-outline-dark rounded-5" style="font-family: Poppins; font-weight: 600; padding: 20; font-size: 20px;">Lebih Lanjut</button>
+      </div>
+      <div class="col-md-6" >
+        <img src="image/rapat.jpg" alt="" style="max-width: 100%;">
+      </div>
+    </div>
+  </div>
+
+    <!-- <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 p-0">
+          <div class="banner-card" style="position: relative;">
+            <img src="image/unri.svg" alt="" style="max-width: auto; height: auto;">
+            <div class="banner-text" style="position: absolute; top: 20%; color: white; text-align: center;">
+              <h1>Tentang UNRI</h1>
+              <p >Turut mengahasilkan SDM yang unggul di tingkat pendidikan tinggi sejak 1962 baik di 
+                Provinsi Riau maupun Skala nasional. Meningkatkan dan memperkokoh daya saing SDM melalui 
+                tri dharma pergurauan tinggi: pendidikan & pengajaran, penelitian, dan pengabdian kepada 
+                masyarakat. Berkontribusi dalam memenuhi kebutuhan teknologi, menciptakan lapangan kerja, 
+                pertumbuhan ekonomi regional dan nasional. Menyediakan dan mengatur pendanaan bagi penyediaan 
+                sarana dan prasarana pendidikan serta penyelenggaraan pendidikan sesuai dengan standar dengan mutu terbaik.</p>
+                <button type="button" class="btn btn-warning text-black rounded-5 p-3 fw-bold">Lebih Lanjut</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  <div class="banner-card" style="position: relative;">
+    <img src="image/unri.svg" alt="" style="max-width: 100%; height: auto;">
+    <div class="banner-text" style="position: absolute; top: 15%; color: white; padding: 10px; text-align: center;">
+      <h1 style="font-size: 3vw; margin-bottom: 1vw;">Tentang UNRI</h1>
+      <p style="font-size: 1.5vw; margin-bottom: 1vw;">Turut mengahasilkan SDM yang unggul di tingkat pendidikan tinggi sejak 1962 baik di 
+        Provinsi Riau maupun Skala nasional. Meningkatkan dan memperkokoh daya saing SDM melalui 
+        tri dharma pergurauan tinggi: pendidikan & pengajaran, penelitian, dan pengabdian kepada 
+        masyarakat. Berkontribusi dalam memenuhi kebutuhan teknologi, menciptakan lapangan kerja, 
+        pertumbuhan ekonomi regional dan nasional. Menyediakan dan mengatur pendanaan bagi penyediaan 
+        sarana dan prasarana pendidikan serta penyelenggaraan pendidikan sesuai dengan standar dengan mutu terbaik.</p>
+        <button type="button" class="btn btn-warning text-black rounded-5 fw-bold" style="font-size: 1vw; padding: 1vw 3vw;">Lebih Lanjut</button>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row p-4 ps-5">
+      <div class="col-md-4">
+        <img src="https://unri.ac.id/wp-content/uploads/2021/07/SELAMAT-600x384.png" alt="" style="max-width: 100%;">
+      </div>
+      <div class="col-md-4">
+        <img src="https://unri.ac.id/wp-content/uploads/2021/07/SELAMAT-1-600x384.png" alt="" style="max-width: 100%;">
+      </div>
+      <div class="col-md-4  ">
+        <img src="https://unri.ac.id/wp-content/uploads/2021/07/SELAMAT-3-600x384.png" alt="" style="max-width: 100%;">
+      </div>
+    </div>
+    <div class="row p-4 ps-5">
+      <div class="col-md-4">
+        <img src="https://unri.ac.id/wp-content/uploads/2021/07/SELAMAT-2.png" alt="" style="max-width: 100%;">
+      </div>
+      <div class="col-md-4">
+        <img src="https://unri.ac.id/wp-content/uploads/2023/11/WhatsApp-Image-2023-11-24-at-135337.jpeg" alt="" style="max-width: 100%;">
+      </div>
+      <div class="col-md-4  ">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-dark">
+    <div class="row">
+        <div class="col-md-4 text-white p-5">
+            <img src="https://unri.ac.id/wp-content/uploads/2024/02/logo-unri21-Blu-1.png" alt="" width="218px" height="32px">
+            <div class="bg-success" style="padding: 1px; margin-top: 5px;"></div>
+            <p style="opacity: 0.5;">Kampus Bina Widya KM. 12,5, Simpang Baru, Kec. Tampan, Kota Pekanbaru, Riau 28293</p>
+            <p>(0761) 63266</p>
+            <p>rektor@unri.ac.id</p>
+        </div>
+        <div class="col-md-4 text-white p-5">
+            <h4 style="font-weight: 700;">Peta</h4>
+            <div class="bg-success" style="padding: 1px;"></div>
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7979.360811802009!2d101.380647!3d0.476395!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5aea1f427ab57%3A0x74d49c35acbd10e1!2sUniversity%20of%20Riau!5e0!3m2!1sen!2sus!4v1711317235558!5m2!1sen!2sus" style="border:0; padding-top: 5px; width: 50vw; height: 30vw;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid bg-secondary">
+    <div class="row d-flex pt-3 justify-content-center">
+        <div class="col-md-4 p-3 d-flex justify-content-center" style="top: 50%;">
+            <p>Copyright @ Universitas Riau</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+      <script src="src/script.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+  </html>
