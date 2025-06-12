@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda Unri - Modern & Clean Concept</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /*--------------------------------------------------------------
+        # Variabel & Gaya Dasar (Blue & White Theme)
+        --------------------------------------------------------------*/
+        :root {
+            --primary-color: #0D6EFD; /* Bootstrap Primary Blue */
+            --secondary-color: #6C757D; /* Bootstrap Secondary Grey */
+            --light-bg: #F8F9FA; /* Light Grey Background */
+            --card-bg: #FFFFFF;
+            --text-dark: #212529; /* Dark text for light backgrounds */
+            --text-light: #F8F9FA; /* Light text for dark backgrounds */
+            --glow-color: rgba(13, 110, 253, 0.15); /* Soft blue glow */
+            --border-radius: 12px;
+            --shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        /* Helper class untuk transisi */
+        .transition-all {
+            transition: all 0.4s ease-in-out;
+        }
+
+        /*--------------------------------------------------------------
+        # Navbar
+        --------------------------------------------------------------*/
+        .navbar-top {
+            background-color: #FFFFFF;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .navbar-top .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+        }
+        .navbar-top .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        .navbar-top img {
+            width: 20px;
+            height: auto;
+            border-radius: 3px;
+            opacity: 0.8;
+        }
+        .navbar-top img:hover {
+            opacity: 1;
+        }
+
+        .main-navbar {
+            background-color: rgba(255, 255, 255, 0.8); /* Glassmorphism */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .main-navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .main-navbar .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 600;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 50px;
+        }
+        
+        .main-navbar .nav-link:hover,
+        .main-navbar .nav-link.active {
+            color: var(--primary-color) !important;
+            background-color: var(--glow-color);
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /*--------------------------------------------------------------
+        # Hero Section (Video)
+        --------------------------------------------------------------*/
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-section video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(30deg, rgba(0, 86, 179, 0.4), rgba(13, 110, 253, 0.2));
+            z-index: -1;
+        }
+        .hero-caption {
+            text-align: center;
+            z-index: 1; /* Make sure it's on top */
+        }
+        .hero-caption img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        /*--------------------------------------------------------------
+        # Sections
+        --------------------------------------------------------------*/
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+        }
+        .section-title::after{
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /*--------------------------------------------------------------
+        # News Auto-Scroll Section
+        --------------------------------------------------------------*/
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .news-scroller {
+            overflow: hidden;
+            padding: 2rem 0;
+            -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+        }
+        .news-scroller-inner {
+            display: flex;
+            width: calc(380px * 12); /* (Card width + gap) * number of cards */
+            animation: scroll-left 40s linear infinite;
+        }
+        .news-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+            width: 350px;
+            margin: 0 15px;
+            flex-shrink: 0;
+            height: 100%; 
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* SMOOTHER TRANSITION */
+            z-index: 1;
+        }
+        .news-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px var(--glow-color);
+            z-index: 10;
+        }
+        .news-card img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+        .news-card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .news-card-body p.title {
+            font-weight: 600;
+            color: var(--text-dark);
+            min-height: 85px; /* Set minimum height for the title paragraph */
+            margin-bottom: 1rem;
+        }
+        
+        /*--------------------------------------------------------------
+        # Announcement Section
+        --------------------------------------------------------------*/
+        .announcement-item {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            box-shadow: var(--shadow);
+            min-height: 120px; /* Set uniform height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center content */
+        }
+        .announcement-item:hover {
+            transform: translateX(8px);
+            border-color: #0047AB; /* Darker blue on hover */
+        }
+        .announcement-item p {
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+        .announcement-item .date {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        /*--------------------------------------------------------------
+        # Counter Section
+        --------------------------------------------------------------*/
+        .counter-wrapper {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('image/unri.svg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            padding: 5rem 0;
+        }
+        .counter {
+            text-align: center;
+            color: var(--text-dark);
+        }
+        .counter i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .counter .count {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .counter p {
+            font-weight: 500;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /*--------------------------------------------------------------
+        # Program Cards Section
+        --------------------------------------------------------------*/
+        .program-card {
+            background-color: var(--card-bg);
+            border: 1px solid #dee2e6;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-card.highlight {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        .program-card.highlight:hover {
+             transform: scale(1.08) translateY(-10px);
+        }
+        .program-card.highlight .btn-custom {
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+        }
+        .program-card.highlight .card-title,
+        .program-card.highlight p {
+            color: var(--text-light);
+        }
+        .program-card .card-title {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 0.8rem 1.75rem;
+            border-radius: 50px;
+            border: none;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+            background-color: #0056b3;
+            box-shadow: 0 5px 15px var(--glow-color);
+        }
+
+        /*--------------------------------------------------------------
+        # NEW: Feature Section (Penelitian, etc.)
+        --------------------------------------------------------------*/
+        .feature-section {
+            background-color: var(--card-bg);
+            padding: 4rem 0;
+        }
+        .feature-section .img-col img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            object-fit: cover;
+        }
+        .feature-section .text-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        .feature-section h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        .feature-section p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+
+        /*--------------------------------------------------------------
+        # Footer
+        --------------------------------------------------------------*/
+        .footer {
+            background-color: #0A192F; /* Dark Navy Blue */
+            padding: 5rem 0 1rem 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .footer h4 {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        .footer .brand-line {
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary-color), transparent);
+            margin: 1rem 0;
+        }
+        .footer iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--border-radius);
+            opacity: 0.8;
+            border: 0;
+        }
+        .footer .list-unstyled a {
+             transition: all 0.2s ease;
+             padding: 5px 0;
+             display: inline-block;
+        }
+        .footer .list-unstyled a:hover {
+            color: var(--primary-color) !important;
+            transform: translateX(5px);
+        }
+        .footer-bottom {
+            background-color: #0A192F;
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /*--------------------------------------------------------------
+        # Media Queries
+        --------------------------------------------------------------*/
+        @media (max-width: 991.98px) {
+            .main-navbar .navbar-collapse {
+                background-color: var(--card-bg);
+                padding: 1rem;
+                border-radius: var(--border-radius);
+                margin-top: 1rem;
+                box-shadow: var(--shadow);
+            }
+            .feature-section .text-col {
+                text-align: center;
+                padding-top: 2rem;
+            }
+        }
+        @media (max-width: 767.98px) {
+            .counter-wrapper { padding: 3rem 0; }
+            .counter { margin-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-top py-2">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="topNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">Portal</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">Kalender Akademik</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">Webmail</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">Blog Staff</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">Dokumen</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">Prestasi</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">PPID</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#">PKKMB</a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#"><i class="bi bi-search"></i></a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#"><img src="image/indonesia.jpg" alt="indonesia"></a></li>
+                    <li class="nav-item"><a class="nav-link transition-all" href="#"><img src="image/inggris.jpg" alt="inggris"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <nav class="navbar navbar-expand-lg py-3 sticky-top main-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./image/logo-unri21-Blu-1.webp" alt="Logo Unri" width="218" height="32">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">BERANDA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TENTANG UNRI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">PENDIDIKAN</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">PENELITIAN</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">MAHASISWA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">INTERNASIONAL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">PENDAFTARAN</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="video/y2mate.com-SLIDESHOW-UNRI-2023_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="hero-caption" data-aos="fade-in" data-aos-delay="500">
+            <img src="image/Universitas Riau (1).png" alt="Universitas Riau">
+        </div>
+    </header>
+
+    <main>
+        <section class="section-padding" style="background-color: var(--card-bg);">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">BERITA TERKINI</h2>
+            </div>
+            <div class="news-scroller" data-aos="fade-up">
+                <div class="news-scroller-inner">
+                    <div class="card news-card"><img src="./image/1.webp" alt="Berita 1"><div class="news-card-body"><p class="title">Menebar Keberkahan Qurban, FISIP Universitas Riau Merajut Kepedulian Sosial</p><p class="opacity-50 small">June 8, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/2.webp" alt="Berita 2"><div class="news-card-body"><p class="title">Masjid Arfaunnas Unri Laksanakan Penyembelihan Hewan Qurban Sempena Idul Adha 1446 H</p><p class="opacity-50 small">June 8, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/3.webp" alt="Berita 3"><div class="news-card-body"><p class="title">Unri tetapkan UKT Sesuai Dengan Kemampuan Ekonomi Mahasiswa</p><p class="opacity-50 small">June 5, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/4.webp" alt="Berita 4"><div class="news-card-body"><p class="title">Semangat Inovasi Pertanian, HIMAGROTEK Pertanian Unri Laksanakan LKTIN dan Seminar Nasional 2025</p><p class="opacity-50 small">June 5, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/5.webp" alt="Berita 5"><div class="news-card-body"><p class="title">UNRI Bangkitkan Semangat Pancasila di Era Digital</p><p class="opacity-50 small">June 2, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/6.webp" alt="Berita 6"><div class="news-card-body"><p class="title">Rektor UNRI Lantik Dekan dan Koordinator Prodi, Tegaskan Komitmen Pelayanan Unggul</p><p class="opacity-50 small">June 2, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/1.webp" alt="Berita 1"><div class="news-card-body"><p class="title">Menebar Keberkahan Qurban, FISIP Universitas Riau Merajut Kepedulian Sosial</p><p class="opacity-50 small">June 8, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/2.webp" alt="Berita 2"><div class="news-card-body"><p class="title">Masjid Arfaunnas Unri Laksanakan Penyembelihan Hewan Qurban Sempena Idul Adha 1446 H</p><p class="opacity-50 small">June 8, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/3.webp" alt="Berita 3"><div class="news-card-body"><p class="title">Unri tetapkan UKT Sesuai Dengan Kemampuan Ekonomi Mahasiswa</p><p class="opacity-50 small">June 5, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/4.webp" alt="Berita 4"><div class="news-card-body"><p class="title">Semangat Inovasi Pertanian, HIMAGROTEK Pertanian Unri Laksanakan LKTIN dan Seminar Nasional 2025</p><p class="opacity-50 small">June 5, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/5.webp" alt="Berita 5"><div class="news-card-body"><p class="title">UNRI Bangkitkan Semangat Pancasila di Era Digital</p><p class="opacity-50 small">June 2, 2025</p></div></div>
+                    <div class="card news-card"><img src="./image/6.webp" alt="Berita 6"><div class="news-card-body"><p class="title">Rektor UNRI Lantik Dekan dan Koordinator Prodi, Tegaskan Komitmen Pelayanan Unggul</p><p class="opacity-50 small">June 2, 2025</p></div></div>
+            </div>
+            <div class="text-center mt-4" data-aos="fade-up">
+                <button class="btn btn-custom transition-all">Lihat Semua Berita</button>
+            </div>
+        </section>
+
+        <section class="counter-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up"><div class="counter"><i class="bi bi-person-check-fill"></i><h1 class="count" data-target="107">0</h1><p>GURU BESAR</p></div></div>
+                    <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><div class="counter"><i class="bi bi-building"></i><h1 class="count" data-target="10">0</h1><p>FAKULTAS</p></div></div>
+                    <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><div class="counter"><i class="bi bi-mortarboard-fill"></i><h1 class="count" data-target="35388">0</h1><p>MAHASISWA</p></div></div>
+                    <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150"><div class="counter"><i class="bi bi-journal-bookmark-fill"></i><h1 class="count" data-target="109">0</h1><p>PROGRAM STUDI</p></div></div>
+                    <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200"><div class="counter"><i class="bi bi-people-fill"></i><h1 class="count" data-target="902">0</h1><p>DOSEN</p></div></div>
+                    <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="250"><div class="counter"><i class="bi bi-briefcase-fill"></i><h1 class="count" data-target="365">0</h1><p>TENAGA KEPENDIDIKAN</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background-color: var(--card-bg);">
+             <div class="container">
+                <h2 class="section-title" data-aos="fade-up">PENGUMUMAN</h2>
+                <div class="row">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="announcement-item transition-all"><p>Hasil Evaluasi Daya Tampung Program Studi Yang Terdeteksi Kenaikan Anomali</p><p class="date">JANUARY 31, 2024</p></div>
+                        <div class="announcement-item transition-all"><p>Pembayaran UKT/SPP Semester Genap tahun Akademik 2024/2024</p><p class="date">JANUARY 3, 2024</p></div>
+                        <div class="announcement-item transition-all"><p>Pengajuan Revisi UKT Mahasiswa Angkatan 2023 Pemegang KIP Kuliah</p><p class="date">DECEMBER 28, 2023</p></div>
+                    </div>
+                     <div class="col-lg-6" data-aos="fade-left">
+                        <div class="announcement-item transition-all"><p>Hasil Akhir Seleksi (Kelulusan) PPPK Kebutuhan Tenaga Teknis dan Tenaga Kesehatan</p><p class="date">DECEMBER 24, 2023</p></div>
+                        <div class="announcement-item transition-all"><p>Hasil SKD CPNS Kemdikbudristek TA 2023</p><p class="date">NOVEMBER 24, 2023</p></div>
+                        <div class="announcement-item transition-all"><p>Pengajuan Revisi UKT Semester Genap Tahun 2023/2024</p><p class="date">OCTOBER 12, 2023</p></div>
+                    </div>
+                </div>
+                 <div class="text-center mt-5" data-aos="fade-up">
+                    <button class="btn btn-custom transition-all">Arsip Pengumuman</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background-color: var(--light-bg);">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">PROGRAM PENDIDIKAN</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card program-card transition-all">
+                            <div class="card-body"><h5 class="card-title">PROGRAM SARJANA</h5><p>Program sarjana untuk lulusan SMA/SMK/MA/MAK dengan beban studi 144-160 sks yang dapat ditempuh dalam 8-14 semester.</p></div>
+                            <button class="btn btn-custom transition-all mt-4">Baca Selengkapnya</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card program-card highlight transition-all">
+                            <div class="card-body"><h5 class="card-title">PROGRAM PASCASARJANA</h5><p>UNRI menawarkan program studi lanjutan di tingkat S2 dan S3 yang diselenggarakan di fakultas serta sekolah Pascasarjana.</p></div>
+                            <button class="btn btn-custom transition-all mt-4">Baca Selengkapnya</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card program-card transition-all">
+                            <div class="card-body"><h5 class="card-title">PROGRAM PROFESI</h5><p>Program profesi diperuntukkan sebagai bagi lulusan program studi tertentu sebagai syarat untuk mendapatkan gelar keprofesian.</p></div>
+                            <button class="btn btn-custom transition-all mt-4">Baca Selengkapnya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 img-col" data-aos="fade-right">
+                        <img src="image/penelitian.svg" alt="Penelitian Background">
+                    </div>
+                    <div class="col-lg-6 text-col" data-aos="fade-left" data-aos-delay="100">
+                        <h1>Penelitian</h1>
+                        <p>Sebagai Universitas Riset Berkelas Dunia, UNRI memberikan perhatian khusus terhadap kegiatan penelitian serta mendorong dosen dan mahasiswa untuk mengembangkan berbagai penelitian yang berorientasi untuk memenuhi kebutuhan bangsa.</p>
+                        <div class="mt-2"><button class="btn btn-custom btn-lg transition-all">Selengkapnya</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section" style="background-color: var(--light-bg);">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 text-col order-lg-1 order-2" data-aos="fade-right">
+                        <h1>Pengabdian</h1>
+                        <p>UNRI secara konsisten berjuang bersama rakyat hingga akar rumput membangun dan menyejahterakan Indonesia. UNRI terus mendorong peningkatan kuantitas dan kualitas pengabdian kepada masyarakat berbasis riset.</p>
+                        <div class="mt-2"><button class="btn btn-custom btn-lg transition-all">Lebih Lanjut</button></div>
+                    </div>
+                    <div class="col-lg-6 img-col order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100">
+                        <img src="image/KKN.svg" alt="Pengabdian Background">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 img-col" data-aos="fade-right">
+                        <img src="image/unri.svg" alt="Tentang Unri Background">
+                    </div>
+                    <div class="col-lg-6 text-col" data-aos="fade-left" data-aos-delay="100">
+                        <h1>Tentang UNRI</h1>
+                        <p>Turut menghasilkan SDM yang unggul di tingkat pendidikan tinggi sejak 1962. Meningkatkan dan memperkokoh daya saing SDM melalui tri dharma perguruan tinggi: pendidikan, penelitian, dan pengabdian kepada masyarakat.</p>
+                        <div class="mt-2"><button class="btn btn-custom btn-lg transition-all">Lebih Lanjut</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-5 col-md-12" data-aos="fade-right">
+                    <img src="./image/logo-unri21-Blu-1.webp" alt="Logo Unri Footer" width="218">
+                    <div class="brand-line"></div>
+                    <p>Kampus Bina Widya KM. 12,5, Simpang Baru, Kec. Tampan, Kota Pekanbaru, Riau 28293</p>
+                    <p class="mt-3"><i class="bi bi-telephone-fill me-2"></i> (0761) 63266</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> rektor@unri.ac.id</p>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Tautan Cepat</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-white-50">Tentang Unri</a></li>
+                        <li><a href="#" class="text-decoration-none text-white-50">Penerimaan</a></li>
+                        <li><a href="#" class="text-decoration-none text-white-50">Fakultas & Sekolah</a></li>
+                        <li><a href="#" class="text-decoration-none text-white-50">Kontak Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-left" data-aos-delay="200">
+                    <h4>Lokasi Kampus</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.664473881472!2d101.37255151528654!3d0.466531863583687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a898492021cf%3A0x11749603d65016a3!2sUniversitas%20Riau!5e0!3m2!1sen!2sid!4v1678889999999" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p class="mb-0">Copyright © 2025 Universitas Riau. All Rights Reserved.</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // 1. Initialize AOS (Animate on Scroll)
+            AOS.init({
+                duration: 800, // animation duration in ms
+                once: true,    // whether animation should happen only once
+                offset: 50     // offset (in px) from the original trigger point
+            });
+
+            // 2. Animate Counters
+            const counters = document.querySelectorAll('.count');
+            const speed = 250; 
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const animateCounter = entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText.replace(/\./g, '');
+                        const increment = Math.ceil(target / speed);
+
+                        if (count < target) {
+                            counter.innerText = Math.min(count + increment, target).toLocaleString('id-ID');
+                            setTimeout(updateCount, 15);
+                        } else {
+                            counter.innerText = target.toLocaleString('id-ID');
+                        }
+                    };
+                    
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            };
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(animateCounter);
+            }, observerOptions);
+            
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+
+            // 3. Navbar Scroll Effect
+            const mainNavbar = document.querySelector('.main-navbar');
+            if (mainNavbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        mainNavbar.classList.add('scrolled');
+                    } else {
+                        mainNavbar.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
