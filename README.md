@@ -8,14 +8,8 @@ Ini adalah proyek redesign frontend untuk halaman utama (beranda) website Univer
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 **PENTING:** Ganti `username` dan `repo-name` di bawah ini dengan username dan nama repositori GitHub Anda.
-> **Lihat Demo Langsung:** [https://username.github.io/repo-name/](https://username.github.io/repo-name/)
+> **Lihat Demo Langsung:** [https://ihsanafh.github.io/beranda-unri/](https://ihsanafh.github.io/beranda-unri/)
 
-### Screenshot
-
-![Screenshot Website](./path/to/your/screenshot.png)
-*(**Catatan:** Ambil screenshot dari website yang sudah jadi dan simpan dengan nama `screenshot.png` di dalam folder proyek Anda, lalu perbarui path di atas jika perlu)*
-
----
 
 ## 🚀 Fitur Utama
 
