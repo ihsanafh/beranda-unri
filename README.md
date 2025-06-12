@@ -59,7 +59,7 @@ Proyek ini adalah website statis murni dan tidak memerlukan proses build atau in
 
 1.  **Clone repositori ini:**
     ```bash
-    git clone [https://github.com/username/repo-name.git](https://github.com/username/repo-name.git)
+    git clone [https://github.com/ihsanafh/beranda-unri.git](https://github.com/ihsanafh/beranda-unri.git)
     ```
 2.  **Masuk ke direktori proyek:**
     ```bash
@@ -77,11 +77,7 @@ Kontribusi untuk pengembangan lebih lanjut sangat diterima! Jika Anda ingin berk
 4.  **Push** ke *branch* Anda (`git push origin fitur/NamaFitur`).
 5.  Buka **Pull Request**.
 
-## 📄 Lisensi
-
-Proyek ini dilisensikan di bawah [MIT License](./LICENSE).
-
 ## ✨ Kredit
 
--   **Desain & Pengembangan:** [Nama Anda / Username GitHub Anda]
+-   **Desain & Pengembangan:** [Ahmadi Ihsan Ananda / ihsanafh]
 -   **Aset Digital:** Logo, gambar, dan video yang digunakan dalam proyek ini adalah milik **Universitas Riau**. Proyek ini dibuat hanya untuk tujuan konsep dan portofolio.
